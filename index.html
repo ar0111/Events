@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+    <h1>Welcome to our JS event.</h1>
+    <button onclick="alert('Sabdhan Tomak ami sesh kore dibo')">Sabdhan</button>
+    <button onclick="console.log('ami console e print hoyechi')">Output in clg</button>
+    <button onclick="document.body.style.backgroundColor = 'red'">Make Red</button>
+    <button onclick="makeGreen()">Make Green</button>
+    <button id="make-yellow">Make Yellow</button>
+    <button id="make-golden">Make Golden</button>
+
+
+    <section>
+        <div id="comments">
+            <h1>Enter Your Comment</h1>
+            <p>comment 1: Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, incidunt. Officiis, modi asperiores. Quos recusandae natus quidem, amet odio id.</p>
+            <p>comment 2: Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, incidunt. Officiis, modi asperiores. Quos recusandae natus quidem, amet odio id.</p>
+        </div>
+
+        <div>
+            <textarea name="" id="comment" cols="30" rows="10"></textarea>
+            <button id="post">Post</button>
+        </div>
+    </section>
+
+    <section>
+        <h1>Delete Our System</h1>
+        <h3 id="secret"> Our Secret Name</h3>
+        <input id="delete-confirmation">
+        <button id ="delete" disabled>Delete</button>
+    </section>
+
+
+
+    <!-- <script src="index.js"></script> -->
+    <script>
+        function makeGreen(){
+            document.body.style.backgroundColor = "green";
+        }
+
+        const yellowButton = document.getElementById('make-yellow');
+
+        yellowButton.onclick = makeYellow;
+
+        function makeYellow(){
+            document.body.style.backgroundColor = "yellow";
+        }
+
+        // const goldenBtn = document.querySelector('#make-golden');
+        // goldenBtn.onclick = function(){
+        //     document.body.style.backgroundColor = "gold";
+        // }
+
+        // goldenBtn.addEventListener('click', function(){
+        //     document.body.style.backgroundColor = "gold";
+        // });
+
+        document.querySelector('#make-golden').addEventListener('click', function(){
+            document.body.style.backgroundColor = 'gold';
+        });
+
+
+        const post = document.querySelector('#post');
+        // console.log(post);
+        post.addEventListener('click', function(){
+            // console.log('clicked');
+            const commentField = document.getElementById('comment');
+            const comment = commentField.value;
+            // console.log(comment);
+            const commentsContainer = document.querySelector('#comments');
+            const p = document.createElement('p');
+            // console.log(p);
+            p.innerText = comment;
+            // console.log(p);
+            commentsContainer.append(p);
+            commentField.value = '';
+        })
+
+        document.querySelector('#delete-confirmation').addEventListener('keyup', function(event){
+            const deleteField = event.target.value;
+            const dltBtn = document.querySelector('#delete');
+
+            if(deleteField == 'delete'){
+                dltBtn.removeAttribute('disabled');
+                dltBtn.addEventListener('click', function(){
+                    document.querySelector('#secret').style.display = 'none';
+                    event.target.value = '';
+                })
+            }else{
+                dltBtn.setAttribute('disabled', true);
+            }
+        })
+
+        // document.querySelector('#delete-confirmation').addEventListener('keydown', function(){
+        //     document.body.style.backgroundColor = 'red';
+        // })
+
+
+        // document.querySelector('#delete-confirmation').addEventListener('blur', function(){
+        //     document.body.style.backgroundColor = 'red';
+        // })
+
+        // document.querySelector('#delete-confirmation').addEventListener('focus', function(){
+        //     document.body.style.backgroundColor = 'red';
+        // })
+
+        // document.querySelector('#delete').addEventListener('click', function(){
+        //     document.getElementById('secret').style.display = 'none';
+        // })
+        // document.querySelector('#delete-confirmation').addEventListener()
+    </script>
+</body>
+</html>
